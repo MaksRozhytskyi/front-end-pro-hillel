@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>4.3</title>
+    <style>
+        body {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+<script>
+    const userYear = prompt("Enter your birth year:");
+    const userAge = 2025 - userYear;
+
+    const userCity = prompt("Where are you from?");
+    let userCountry = "";
+
+    if (userCity === "Kyiv") {
+        userCountry = "Ukraine"
+    } else if (userCity === "Washington") {
+        userCountry = "USA"
+    } else if (userCity === "London") {
+        userCountry = "UK"
+    }
+
+    const userSport = prompt("What is your favorite sport?");
+    let sportStar = "";
+
+    if (userSport === "Swimming") {
+        sportStar = "Michael Fred Phelps"
+    } else if (userSport === "Golf") {
+        sportStar = "Tiger Woods"
+    } else if (userSport === "Basketball") {
+        sportStar = "Michael Jordan"
+    }
+
+    let fullMessage = ``;
+
+    if (userYear === null || userYear === "") {
+        fullMessage += `You did not enter an age. `;
+    } else {
+        fullMessage += `You are ${userAge} years old. `;
+    }
+
+    if (userCountry !== "") {
+        fullMessage += `You are living in a capital city: ${userCity}, ${userCountry}. `;
+    } else if (userCity === null || userCity === "") {
+        fullMessage += `You did not enter a city. `;
+    } else {
+        fullMessage += `You are living in a city: ${userCity}. `;
+    }
+
+    if (sportStar !== "") {
+        fullMessage += `Nice! Want to be ${sportStar}?`;
+    } else if (userSport === null || userSport === "") {
+        fullMessage += `You did not enter a favorite sport.`;
+    } else {
+        fullMessage += `You choose ${userSport}`;
+    }
+
+    alert(fullMessage);
+</script>
+</body>
+</html>
