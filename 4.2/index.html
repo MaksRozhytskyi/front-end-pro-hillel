@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>4.2</title>
+    <style>
+        body {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+<script>
+    let threeNumbers = prompt("Enter a 3-digit number");
+    if (threeNumbers.length === 3) {
+        let firstDigit = threeNumbers[0];
+        let secondDigit = threeNumbers[1];
+        let thirdDigit = threeNumbers [2];
+
+
+        if (firstDigit === secondDigit && secondDigit === thirdDigit) {
+            alert ('All digits are the same')
+        } else if (firstDigit === secondDigit || secondDigit === thirdDigit || firstDigit === thirdDigit) {
+            alert ('Two digits are the same')
+        } else {
+            alert ('All digits are different')
+        }
+    } else {
+        alert ('There is no 3-digit number')
+    }
+</script>
+</body>
+</html>
