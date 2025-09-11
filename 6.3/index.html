@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>6.3</title>
+    <style>
+        body {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+<script>
+    let contacts = {
+        people: [
+            {name: 'Max', number: '380975010835', email: 'maximrozhik@gmail.com'},
+            {name: 'Sergii', number: '380975010836', email: 'sergii.zhuravel@gmail.com'},
+        ]
+    }
+
+    let searchName = prompt('Enter a name to search:');
+    let foundName = [];
+
+    for (let i = 0; i < contacts.people.length; i++) {
+        if (searchName === contacts.people[i].name) {
+            foundName.push(contacts.people[i]);
+        }
+    }
+    console.log(foundName)
+
+    let addContact = prompt('Do you want to add a contact? (Yes/No)');
+    if (addContact !== null && addContact.toLowerCase() === 'yes') {
+        let addName = prompt('Enter a name');
+        let addNumber = prompt('Enter a number');
+        let addEmail = prompt('Enter an Email');
+
+        contacts.people.push({name: addName, number: addNumber, email: addEmail});
+        console.log('All contacts:', contacts.people);
+    } else {
+        console.log('No new contacts')
+    }
+</script>
+
+</body>
+</html>
