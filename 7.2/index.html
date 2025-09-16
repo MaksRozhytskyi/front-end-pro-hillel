@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>7.2</title>
+    <style>
+        body {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+<script>
+    function arithmeticMean(arrayOfNumbers) {
+        let sumNumbers = 0;
+        let amountNumber = 0;
+        for (let i = 0; i < arrayOfNumbers.length; i++) {
+            if (typeof arrayOfNumbers[i] === "number") {
+                sumNumbers += arrayOfNumbers[i];
+                amountNumber++;
+            }
+        }
+        return sumNumbers / amountNumber;
+    }
+
+    let arrayData = [3, 6, 'ithillel', 9, true];
+    console.log(arithmeticMean(arrayData)); //вызов через заданный массив
+
+    console.log(arithmeticMean([2, 4, 6])); //вызов через "пользовательский" массив
+</script>
+
+</body>
+</html>
