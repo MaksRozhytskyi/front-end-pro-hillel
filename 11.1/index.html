@@ -12,22 +12,17 @@
 
 </div>
 <script>
-    let table = document.getElementById('tableView');
+    const table = document.getElementById('tableView');
 
-    function test() {
-        let result = '';
-        for (let i = 1; i < 11; i++) {
-            for (let j = 1; j < 11; j++) {
-                result += (i * j) + ' ';
-            }
-            result += '\n';
+    for (let i = 1; i <= 10; i++) {
+        const tr = document.createElement('tr');
+        for (let j = 1; j <= 10; j++) {
+            const td = document.createElement('td');
+            td.textContent = i * j;
+            tr.appendChild(td);
         }
-        return result;
+        table.appendChild(tr);
     }
-
-    const element = document.getElementById("tableView");
-    element.textContent = test();
-    element.innerHTML = test().replace(/\n/g, '<br>');
 </script>
 </body>
 </html>
