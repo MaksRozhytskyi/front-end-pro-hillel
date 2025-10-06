@@ -78,17 +78,6 @@
             font-weight: 600;
             margin: 0;
         }
-
-        .error-message {
-            margin: 0;
-        }
-
-        .error-message p {
-            color: red;
-            font-family: "Open Sans", sans-serif;
-            font-weight: 600;
-            margin: 0;
-        }
     </style>
 </head>
 <body>
@@ -98,15 +87,22 @@
     <label> <input type="text" name="name" placeholder="Name" class="label-design" id="name"/> </label>
     <p id="errorText" class="error-text"></p>
     <label> <textarea name="message" placeholder="Message" class="label-design" id="message"></textarea> </label>
-    <p id="errorMessage" class="error-message"></p>
+    <p id="errorMessage" class="error-text"></p>
     <p class="secondary-text">How to answer you?</p>
-    <label> <input type="text" name="phone" placeholder="Phone number" class="label-design"/> </label>
-    <label> <input type="email" name="email" placeholder="Email" class="label-design"/> </label>
+    <label> <input type="text" name="phone" placeholder="Phone number" class="label-design" id="phone"/> </label>
+    <p id="errorPhone" class="error-text"></p>
+    <label> <input type="email" name="email" placeholder="Email" class="label-design" id="email"/> </label>
+    <p id="errorEmail" class="error-text"></p>
     <button type="submit" class="button-design">Send message</button>
 </div>
 
 <script>
+    const phoneRegex = /^\+380\d{9}$/;
+    const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
     document.querySelector('button').addEventListener('click', function () {
+        event.preventDefault();
+
         let nameVariable = document.getElementById("name");
         if (nameVariable.value === "") {
             const errorNameText = document.getElementById('errorText');
@@ -114,13 +110,41 @@
             errorText.textContent = 'Enter a name!';
             errorNameText.appendChild(errorText);
         }
+
         let messageVariable = document.getElementById("message");
-        if (messageVariable.value < 5) {
+        if (messageVariable.value.length < 5) {
             const errorMessageText = document.getElementById('errorMessage');
             const errorMessage = document.createElement('p');
             errorMessage.textContent = 'Enter more than 5 symbols!';
             errorMessageText.appendChild(errorMessage);
         }
+
+        let phoneVariable = document.getElementById("phone");
+        if (phoneVariable.value === "") {
+            const errorPhoneText = document.getElementById('errorPhone');
+            const errorPhone = document.createElement('p');
+            errorPhone.textContent = 'Phone number is required!';
+            errorPhoneText.appendChild(errorPhone);
+        } else if (!phoneVariable.value.match(phoneRegex)) {
+            const errorPhoneText = document.getElementById('errorPhone');
+            const errorPhone = document.createElement('p');
+            errorPhone.textContent = 'Enter phone number in format +380XXXXXXXXX';
+            errorPhoneText.appendChild(errorPhone);
+        }
+
+        let emailVariable = document.getElementById("email");
+        if (emailVariable.value === "") {
+            const errorEmailText = document.getElementById('errorEmail');
+            const errorEmail = document.createElement('p');
+            errorEmail.textContent = 'Email is required!';
+            errorEmailText.appendChild(errorEmail);
+        } else if (!emailVariable.value.match(emailRegex)) {
+            const errorEmailText = document.getElementById('errorEmail');
+            const errorEmail = document.createElement('p');
+            errorEmail.textContent = 'Enter email in format test@gmail.com';
+            errorEmailText.appendChild(errorEmail);
+        }
+        event.preventDefault();
     });
 </script>
 </body>
