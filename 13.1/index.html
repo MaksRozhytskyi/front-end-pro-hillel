@@ -103,48 +103,46 @@
     document.querySelector('button').addEventListener('click', function () {
         event.preventDefault();
 
+        document.getElementById('errorText').innerHTML = '';
+        document.getElementById('errorMessage').innerHTML = '';
+        document.getElementById('errorPhone').innerHTML = '';
+        document.getElementById('errorEmail').innerHTML = '';
+
         let nameVariable = document.getElementById("name");
         if (nameVariable.value === "") {
-            const errorNameText = document.getElementById('errorText');
             const errorText = document.createElement('p');
             errorText.textContent = 'Enter a name!';
-            errorNameText.appendChild(errorText);
+            document.getElementById('errorText').appendChild(errorText);
         }
 
         let messageVariable = document.getElementById("message");
         if (messageVariable.value.length < 5) {
-            const errorMessageText = document.getElementById('errorMessage');
             const errorMessage = document.createElement('p');
             errorMessage.textContent = 'Enter more than 5 symbols!';
-            errorMessageText.appendChild(errorMessage);
+            document.getElementById('errorMessage').appendChild(errorMessage);
         }
 
         let phoneVariable = document.getElementById("phone");
         if (phoneVariable.value === "") {
-            const errorPhoneText = document.getElementById('errorPhone');
             const errorPhone = document.createElement('p');
             errorPhone.textContent = 'Phone number is required!';
-            errorPhoneText.appendChild(errorPhone);
+            document.getElementById('errorPhone').appendChild(errorPhone);
         } else if (!phoneVariable.value.match(phoneRegex)) {
-            const errorPhoneText = document.getElementById('errorPhone');
             const errorPhone = document.createElement('p');
             errorPhone.textContent = 'Enter phone number in format +380XXXXXXXXX';
-            errorPhoneText.appendChild(errorPhone);
+            document.getElementById('errorPhone').appendChild(errorPhone);
         }
 
         let emailVariable = document.getElementById("email");
         if (emailVariable.value === "") {
-            const errorEmailText = document.getElementById('errorEmail');
             const errorEmail = document.createElement('p');
             errorEmail.textContent = 'Email is required!';
-            errorEmailText.appendChild(errorEmail);
+            document.getElementById('errorEmail').appendChild(errorEmail);
         } else if (!emailVariable.value.match(emailRegex)) {
-            const errorEmailText = document.getElementById('errorEmail');
             const errorEmail = document.createElement('p');
             errorEmail.textContent = 'Enter email in format test@gmail.com';
-            errorEmailText.appendChild(errorEmail);
+            document.getElementById('errorEmail').appendChild(errorEmail);
         }
-        event.preventDefault();
     });
 </script>
 </body>
