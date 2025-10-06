@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>10.1</title>
+</head>
+<body>
+<script>
+    let company = {
+        sales: [{name: 'John', salary: 1000}, {name: 'Alice', salary: 600}],
+        development: {
+            web: [{name: 'Peter', salary: 2000}, {name: 'Alex', salary: 1800}],
+            internals: [{name: 'Jack', salary: 1300}]
+        }
+    };
+
+    function sumSalaries(department) {
+        if (Array.isArray(department)) {
+            return department.reduce((acc, employee) => acc + employee.salary, 0);
+        } else {
+            let sum = 0;
+            for (let subdepartment of Object.values(department)) {
+                sum += sumSalaries(subdepartment);
+            }
+            return sum;
+        }
+    }
+
+    let totalSalary = sumSalaries(company);
+    console.log(totalSalary);
+</script>
+</body>
+</html>
