@@ -67,14 +67,38 @@
             font-family: "Open Sans", sans-serif;
             color: black;
         }
+
+        .error-text {
+            margin: 0;
+        }
+
+        .error-text p {
+            color: red;
+            font-family: "Open Sans", sans-serif;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .error-message {
+            margin: 0;
+        }
+
+        .error-message p {
+            color: red;
+            font-family: "Open Sans", sans-serif;
+            font-weight: 600;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
 
 <div class="form-design">
     <p class="main-text">We would like to help you</p>
-    <label> <input type="text" name="name" placeholder="Name" class="label-design"/> </label>
-    <label> <textarea name="message" placeholder="Message" class="label-design"></textarea> </label>
+    <label> <input type="text" name="name" placeholder="Name" class="label-design" id="name"/> </label>
+    <p id="errorText" class="error-text"></p>
+    <label> <textarea name="message" placeholder="Message" class="label-design" id="message"></textarea> </label>
+    <p id="errorMessage" class="error-message"></p>
     <p class="secondary-text">How to answer you?</p>
     <label> <input type="text" name="phone" placeholder="Phone number" class="label-design"/> </label>
     <label> <input type="email" name="email" placeholder="Email" class="label-design"/> </label>
@@ -82,7 +106,22 @@
 </div>
 
 <script>
-
+    document.querySelector('button').addEventListener('click', function () {
+        let nameVariable = document.getElementById("name");
+        if (nameVariable.value === "") {
+            const errorNameText = document.getElementById('errorText');
+            const errorText = document.createElement('p');
+            errorText.textContent = 'Enter a name!';
+            errorNameText.appendChild(errorText);
+        }
+        let messageVariable = document.getElementById("message");
+        if (messageVariable.value < 5) {
+            const errorMessageText = document.getElementById('errorMessage');
+            const errorMessage = document.createElement('p');
+            errorMessage.textContent = 'Enter more than 5 symbols!';
+            errorMessageText.appendChild(errorMessage);
+        }
+    });
 </script>
 </body>
 </html>
