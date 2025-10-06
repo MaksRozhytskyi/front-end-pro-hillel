@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>13.1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+          rel="stylesheet">
+    <style>
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .form-design {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(242, 243, 249, 0.73);
+            max-width: 450px;
+            gap: 10px;
+        }
+
+        .main-text {
+            font-family: "Open Sans", sans-serif;
+            font-weight: 800;
+            font-size: 24px;
+            color: #FF337D;
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+
+        .secondary-text {
+            font-family: "Open Sans", sans-serif;
+            font-weight: 800;
+            font-size: 18px;
+            color: #727c86;
+        }
+
+        .button-design {
+            display: inline-block;
+            max-width: 250px;
+            padding: 10px 20px;
+            color: white;
+            background: #18A0FB;
+            font-family: "Open Sans", sans-serif;
+            font-weight: 600;
+            border-radius: 10px;
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        .label-design {
+            width: 280px;
+            border-radius: 10px;
+            border: none;
+            padding-left: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-family: "Open Sans", sans-serif;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-design">
+    <p class="main-text">We would like to help you</p>
+    <label> <input type="text" name="name" placeholder="Name" class="label-design"/> </label>
+    <label> <textarea name="message" placeholder="Message" class="label-design"></textarea> </label>
+    <p class="secondary-text">How to answer you?</p>
+    <label> <input type="text" name="phone" placeholder="Phone number" class="label-design"/> </label>
+    <label> <input type="email" name="email" placeholder="Email" class="label-design"/> </label>
+    <button type="submit" class="button-design">Send message</button>
+</div>
+
+<script>
+
+</script>
+</body>
+</html>
