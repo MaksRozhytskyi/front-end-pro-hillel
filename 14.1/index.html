@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>14.1</title>
+    <style>
+        .slider {
+            position: relative;
+            width: 200px;
+            margin: auto;
+        }
+
+        .slider img {
+            width: 100%;
+            display: none;
+        }
+
+        img.displaySlide {
+            display: block;
+        }
+
+        .buttonNav {
+            position: absolute;
+            top: 50%;
+            background-color: blue;
+            font-size: 50px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 100px;
+            padding: 5px 20px;
+        }
+
+        .next {
+            right: -100px;
+        }
+
+        .prev {
+            left: -100px;
+        }
+
+        .dots {
+            display: flex;
+            justify-content: center;
+            align-items: end;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .dot {
+            background-color: gray;
+            padding: 15px;
+            border-radius: 100%;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dot.changeColor {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+<div class="slider">
+    <div class="slides">
+        <img class="slide" src="images/image1.png" alt="Image #1">
+        <img class="slide" src="images/image2.png" alt="Image #2">
+        <img class="slide" src="images/image3.png" alt="Image #3">
+    </div>
+    <button class="prev buttonNav" onclick="prevSlide()"><</button>
+    <button class="next buttonNav" onclick="nextSlide()">></button>
+    <div class="dots">
+        <button class="dot"></button>
+        <button class="dot"></button>
+        <button class="dot"></button>
+    </div>
+</div>
+
+<script>
+    const slides = document.querySelectorAll(".slides img");
+    const dots = document.querySelectorAll(".dot");
+    let slideIndex = 0;
+
+    document.addEventListener("DOMContentLoaded", () => {
+        showSlide(slideIndex);
+
+        dots.forEach((dot, idx) => {
+            dot.addEventListener("click", () => {
+                showSlide(idx);
+            });
+        });
+
+        updateButtons();
+    });
+
+    function showSlide(index) {
+        slideIndex = index;
+
+        slides.forEach((slide, idx) => {
+            slide.classList.toggle('displaySlide', idx === slideIndex);
+        });
+
+        updateDots();
+        updateButtons();
+    }
+
+    function prevSlide() {
+        if (slideIndex > 0) {
+            showSlide(slideIndex - 1);
+        }
+    }
+
+    function nextSlide() {
+        if (slideIndex < slides.length - 1) {
+            showSlide(slideIndex + 1);
+        }
+    }
+
+    function updateButtons() {
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+
+        if (slideIndex === 0) {
+            prevBtn.style.display = 'none';
+        } else {
+            prevBtn.style.display = '';
+        }
+
+        if (slideIndex === slides.length - 1) {
+            nextBtn.style.display = 'none';
+        } else {
+            nextBtn.style.display = '';
+        }
+    }
+
+    function updateDots() {
+        dots.forEach((dot, idx) => {
+            dot.classList.toggle('changeColor', idx === slideIndex);
+        });
+    }
+</script>
+</body>
+</html>
