@@ -22,6 +22,32 @@
         let currentYear = new Date().getFullYear();
         return currentYear - this.birthYear;
     }
+
+    Student.prototype.getAverageGrade = function () {
+        if (this.grades.length === 0) {
+            console.log('Empty grades')
+        }
+        const sumGrade = this.grades.reduce((acc, grade) => acc + grade, 0);
+        return sumGrade / this.grades.length;
+    }
+
+    Student.prototype.present = function () {
+        if (this.attendanceCount < 25) {
+            this.attendance[this.attendanceCount] = true;
+            this.attendanceCount++
+        } else {
+            console.log('Перебор')
+        }
+    }
+
+    Student.prototype.absent = function () {
+        if (this.attendanceCount < 25) {
+            this.attendance[this.attendanceCount] = false;
+            this.attendanceCount++
+        } else {
+            console.log('Перебор')
+        }
+    }
 </script>
 </body>
 </html>
