@@ -36,7 +36,7 @@
             this.attendance[this.attendanceCount] = true;
             this.attendanceCount++
         } else {
-            console.log('Перебор')
+            console.log('More than 25')
         }
     }
 
@@ -45,9 +45,51 @@
             this.attendance[this.attendanceCount] = false;
             this.attendanceCount++
         } else {
-            console.log('Перебор')
+            console.log('More than 25')
         }
     }
+
+    Student.prototype.summary = function () {
+        const avgGrade = this.getAverageGrade();
+
+        let presentCount = 0;
+        for (let i = 0; i < this.attendanceCount; i++) {
+            if (this.attendance[i] === true) {
+                presentCount++;
+            }
+        }
+
+        let attendanceRate;
+
+        if (this.attendanceCount === 0) {
+            attendanceRate = 0;
+        } else {
+            attendanceRate = presentCount / this.attendanceCount;
+        }
+
+        if (avgGrade > 90 && attendanceRate > 0.9) {
+            return "Молодец!";
+        } else if (avgGrade > 90 || attendanceRate > 0.9) {
+            return "Добре, але можна краще";
+        } else {
+            return "Редиска!";
+        }
+    };
+
+    let studentA = new Student("Иван", "Иванов", 2001, [95, 99, 96, 92, 98]);
+    for (let i = 0; i < 24; i++) studentA.present();
+    for (let i = 0; i < 1; i++) studentA.absent();
+    console.log(studentA.summary());
+
+    let studentB = new Student("Оля", "Петренко", 2003, [91, 92, 95, 93, 97]);
+    for (let i = 0; i < 18; i++) studentB.present();
+    for (let i = 0; i < 7; i++) studentB.absent();
+    console.log(studentB.summary());
+
+    let studentC = new Student("Максим", "Рожицкий", 2000, [70, 65, 60, 80, 75]);
+    for (let i = 0; i < 10; i++) studentC.present();
+    for (let i = 0; i < 15; i++) studentC.absent();
+    console.log(studentC.summary());
 </script>
 </body>
 </html>
