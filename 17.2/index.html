@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>17.2</title>
+</head>
+<body>
+<script>
+    class Coach {
+        constructor(coachName, specialization, rating) {
+            this.coachName = coachName;
+            this.specialization = specialization;
+            this.rating = rating;
+        }
+        displayInfo() {
+            console.log(`Coach: ${this.coachName}, Specialization: ${this.specialization}, Rating: ${this.rating}`);
+        }
+    }
+
+    const coach1 = new Coach('John Doe', 'Fitness', 4.7);
+    const coach2 = new Coach('Alice Smith', 'Yoga', 4.9);
+    coach1.displayInfo(); // "Coach: John Doe, Specialization: Fitness, Rating: 4.7"
+    coach2.displayInfo(); // "Coach: Alice Smith, Specialization: Yoga, Rating: 4.9"
+</script>
+</body>
+</html>
