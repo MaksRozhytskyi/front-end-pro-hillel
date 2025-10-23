@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>17.3</title>
+</head>
+<body>
+<script>
+    class BankAccount {
+        constructor(amount) {
+            this.amount = amount;
+        }
+
+        getBalance() {
+            return this.amount;
+        }
+
+        deposit(depositNumber) {
+            this.amount += depositNumber;
+            return this.amount;
+        }
+
+        withdraw(withdrawNumber) {
+            this.amount -= withdrawNumber;
+            return this.amount;
+        }
+
+    }
+
+    const account1 = new BankAccount(1000);
+    console.log(account1.getBalance()); // 1000
+    account1.deposit(500);
+    console.log(account1.getBalance()); // 1500
+    account1.withdraw(200);
+    console.log(account1.getBalance()); // 1300
+</script>
+</body>
+</html>
