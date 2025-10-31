@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>12.3</title>
+</head>
+<body>
+<h1>To Do List</h1>
+<ul id="taskList">
+</ul>
+<input type="text" name="" id="taskInput" placeholder="Додати нове завдання">
+<button id="addButton">Додати</button>
+<script>
+    const taskInput = document.getElementById('taskInput');
+    const addButton = document.getElementById('addButton');
+    const taskList = document.getElementById('taskList');
+
+    addButton.addEventListener('click', () => {
+        const taskText = taskInput.value.trim();
+        if (taskText === '') {
+            return;
+        }
+        const li = document.createElement('li');
+        li.textContent = taskText + ' ';
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Видалити';
+        li.appendChild(deleteButton);
+        taskList.appendChild(li);
+        taskInput.value = '';
+    });
+
+    taskList.addEventListener('click', (event) => {
+        event.target;
+        if (event.target.tagName==='BUTTON'){
+            event.target.parentElement.remove();
+        }
+    })
+</script>
+</body>
+</html>
