@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>18.1</title>
+</head>
+<body>
+<div id="timer"></div>
+<script>
+    function startTimer(duration, display) {
+        let timer = duration, minutes, seconds;
+        const intervalId = setInterval(function () {
+            minutes = Math.floor(timer / 60);
+            seconds = timer % 60;
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.textContent = minutes + ":" + seconds;
+
+            if (--timer < 0) {
+                clearInterval(intervalId);
+            }
+
+        }, 1000)
+    }
+
+    const timeInSeconds = 65;
+    const display = document.querySelector('#timer');
+    startTimer(timeInSeconds, display);
+</script>
+</body>
+</html>
