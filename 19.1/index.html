@@ -5,7 +5,147 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+    <title>19.1</title>
+    <style>
+        body {
+            background-color: black;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center; /* для вертикального центрирования */
+            height: 100vh; /* чтобы контейнер занимал всю высоту окна для вертикального центрирования */
+            width: 100%; /* или максимум 100% */
+        }
+
+        .weather-block {
+            display: flex;
+            background-color: black;
+            padding-top: 20px;
+            gap: 50px;
+        }
+
+        .left-block {
+            padding-left: 30px;
+        }
+
+        #currentDay {
+            font-family: "Roboto", serif;
+            font-weight: normal;
+            font-size: 24px;
+            color: white;
+            margin: 0;
+        }
+
+        .alarm-and-battery {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 10px;
+        }
+
+        .alarm {
+            display: flex;
+            gap: 5px;
+            font-family: "Roboto", serif;
+            font-weight: normal;
+            font-size: 16px;
+            color: white;
+        }
+
+        .battery {
+            display: flex;
+            gap: 5px;
+            font-family: "Roboto", serif;
+            font-weight: normal;
+            font-size: 16px;
+            color: white;
+        }
+
+        #currentTime {
+            font-family: "Roboto", serif;
+            font-weight: normal;
+            font-size: 42px;
+            margin: 0 0 20px 0;
+            color: white;
+        }
+
+        #humidityApi {
+            font-family: "Roboto", serif;
+            font-weight: normal;
+            font-size: 16px;
+            margin: 0 0 5px 0;
+            color: white;
+        }
+
+        #pressureApi {
+            font-family: "Roboto", serif;
+            font-weight: normal;
+            font-size: 16px;
+            margin: 0;
+            color: white;
+        }
+
+        #windApi {
+            font-family: "Roboto", serif;
+            font-weight: normal;
+            font-size: 16px;
+            color: white;
+        }
+
+        #temperatureApi {
+            font-family: "Roboto", serif;
+            font-weight: bold;
+            font-size: 28px;
+            margin: 0 0 20px 0;
+            color: white;
+        }
+
+        #feelsLikeApi {
+            font-family: "Roboto", serif;
+            font-weight: normal;
+            font-size: 16px;
+            margin: 0 0 5px 0;
+            color: white;
+        }
+
+        #weatherApi {
+            font-family: "Roboto", serif;
+            font-weight: bold;
+            font-size: 16px;
+            margin: 0;
+            color: white;
+        }
+
+        #windApi {
+            font-family: "Roboto", serif;
+            font-weight: normal;
+            font-size: 16px;
+        }
+
+        .right-center-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #refreshApiDate {
+            font-family: "Roboto", serif;
+            font-weight: normal;
+            font-size: 16px;
+            color: white;
+        }
+
+        .right-block-refresh {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-right: 30px;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -14,11 +154,11 @@
             <p id="currentDay"></p>
             <div class="alarm-and-battery">
                 <div class="alarm">
-                    <img src="#" alt="Icon">
+                    <img src="alarm-icon.svg" alt="Icon">
                     <p>Thu 19:15</p>
                 </div>
                 <div class="battery">
-                    <img src="#" alt="Icon">
+                    <img src="battery-icon.svg" alt="Icon">
                     <p>100%</p>
                 </div>
             </div>
@@ -28,28 +168,37 @@
             <p id="windApi"></p>
         </div>
         <div class="right-block">
-            <p id="temperatureApi"></p>
-            <p id="feelsLikeApi"></p>
-            <p id="weatherApi"></p>
-            <p id="refreshApiDate"></p>
+            <div class="right-center-block">
+                <img id="weatherIcon" alt="Weather Icon" style="width: 100px; height: 100px;">
+                <p id="temperatureApi"></p>
+                <p id="feelsLikeApi"></p>
+                <p id="weatherApi"></p>
+            </div>
+            <div class="right-block-refresh">
+                <p id="refreshApiDate"></p>
+                <a href="#" id="refreshWeather"> <img src="refresh-icon.svg" alt="refresh"> </a>
+
+            </div>
         </div>
     </div>
 </div>
 <script>
-    let lat = 46.465650;
-    let lon = 30.735058;
-    let APIkey = 'nuh uh';
+    let lat = 46.482952;
+    let lon = 30.712481;
+    let APIkey = 'aef0bd85b4605736f8088c773d8eec6d';
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}`;
 
     async function getWeather() {
         try {
             const response = await fetch(apiUrl);
             const data = await response.json();
-            console.log(data);
+            console.log(data)
 
             let refreshApiDate = data.dt;
             const refreshDate = new Date(refreshApiDate * 1000);
-            document.getElementById("refreshApiDate").innerHTML = refreshDate;
+            const options = {month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit'};
+            const formattedDate = refreshDate.toLocaleString('en-US', options).replace(',', '');
+            document.getElementById("refreshApiDate").innerHTML = formattedDate;
 
             let humidityApi = data.main.humidity;
             document.getElementById("humidityApi").innerHTML = `Humidity: ${humidityApi}%`;
@@ -62,15 +211,57 @@
 
             let temperatureApi = data.main.temp;
             let temperatureToCelsius = temperatureApi - 273.15;
-            document.getElementById("temperatureApi").innerHTML = Math.floor(temperatureToCelsius) + " допиши потом";
+            document.getElementById("temperatureApi").innerHTML = Math.floor(temperatureToCelsius) + "°C";
 
             let feelsLikeApi = data.main.feels_like;
             let feelsLikeApiToCelsius = feelsLikeApi - 273.15;
-            document.getElementById("feelsLikeApi").innerHTML = Math.floor(feelsLikeApiToCelsius) + " ето другое допиши";
+            document.getElementById("feelsLikeApi").innerHTML = "Feels Like: " + Math.floor(feelsLikeApiToCelsius) + "°C";
 
             const weatherApi = data.weather[0];
             let weatherApiComplete = weatherApi.main
             document.getElementById("weatherApi").innerHTML = weatherApiComplete;
+
+
+            function updateWeatherVisuals(condition) {
+                const weatherBlock = document.querySelector('.weather-block');
+                const weatherIcon = document.getElementById('weatherIcon');
+                let iconSrc = '';
+                let backgroundGradient = '';
+
+                switch (condition.toLowerCase()) {
+                    case 'clear':
+                        iconSrc = 'sunny.svg';
+                        backgroundGradient = 'linear-gradient(135deg, #87ceeb, #3399ff)';
+                        break;
+                    case 'clouds':
+                    case 'mist':
+                        iconSrc = 'partly-cloudy.svg';
+                        backgroundGradient = 'linear-gradient(135deg, #656565, #a3a3a3)';
+                        break;
+                    case 'rain':
+                    case 'drizzle':
+                        iconSrc = 'rain.svg';
+                        backgroundGradient = 'linear-gradient(135deg, #434343, #666666)';
+                        break;
+                    case 'snow':
+                        iconSrc = 'snowy.svg';
+                        backgroundGradient = 'linear-gradient(135deg, #dae6f3, #a7c4e8)';
+                        break;
+                    case 'thunderstorm':
+                        iconSrc = 'rain-thunder.svg';
+                        backgroundGradient = 'linear-gradient(135deg, #2c3e50, #4ca1af)';
+                        break;
+                    default:
+                        iconSrc = 'default.svg';
+                        backgroundGradient = 'linear-gradient(135deg, #000000, #434343)';
+                        break;
+                }
+
+                weatherIcon.src = iconSrc;
+                weatherBlock.style.background = backgroundGradient;
+            }
+
+            updateWeatherVisuals(weatherApiComplete);
 
         } catch (error) {
             console.error('Помилка:', error);
@@ -80,50 +271,32 @@
 
     function getCurrentDay() {
         let currentDate = new Date();
+        let optionsMonthDayYear = {month: 'short', day: '2-digit', year: 'numeric'};
+        let optionsWeekday = {weekday: 'short'};
 
-        let currentDay = currentDate.getDate();
-        if (currentDay < 10) {
-            currentDay = '0' + currentDay;
-        } else {
-            currentDay = currentDay.toString();
-        }
+        let monthDayYear = currentDate.toLocaleDateString('en-US', optionsMonthDayYear);
+        let weekday = currentDate.toLocaleDateString('en-US', optionsWeekday);
 
-        let currentMonth = currentDate.getMonth() + 1;
-        if (currentMonth < 10) {
-            currentMonth = '0' + currentMonth;
-        } else {
-            currentMonth = currentMonth.toString();
-        }
-
-        let currentYear = currentDate.getFullYear();
-        document.getElementById("currentDay").innerHTML = currentMonth + '.' + currentDay + '.' + currentYear;
+        document.getElementById("currentDay").innerHTML = `${monthDayYear} - ${weekday}`;
     }
 
     function getCurrentTime() {
-
         let currentTime = new Date();
-
-        let currentHours = currentTime.getHours();
-        if (currentHours < 10) {
-            currentHours = '0' + currentHours;
-        } else {
-            currentHours = currentHours.toString();
-        }
-
-        let currentMinutes = currentTime.getMinutes();
-        if (currentMinutes < 10) {
-            currentMinutes = '0' + currentMinutes;
-        } else {
-            currentMinutes = currentMinutes.toString();
-        }
-
-        document.getElementById("currentTime").innerHTML = currentHours + ':' + currentMinutes;
+        let options = {hour: 'numeric', minute: '2-digit', hour12: true};
+        let formattedTime = currentTime.toLocaleTimeString('en-US', options);
+        document.getElementById("currentTime").innerHTML = formattedTime;
     }
 
     getWeather();
     getCurrentDay();
     getCurrentTime();
 
+    document.getElementById('refreshWeather').addEventListener('click', function (event) {
+        event.preventDefault();
+        getWeather();
+        getCurrentDay();
+        getCurrentTime();
+    });
 </script>
 </body>
 </html>
