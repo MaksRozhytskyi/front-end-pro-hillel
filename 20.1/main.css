@@ -1,0 +1,113 @@
+body {
+    line-height: 1.2;
+    font-size: 18px;
+    background-color: #66deb2 !important;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 15px !important;
+}
+
+.my-todo-list * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.my-todo-list .container {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 75%;
+}
+
+.my-todo-list .form {
+    background: #fff;
+    padding: 10px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.my-todo-list .form__input {
+    min-height: 25px;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid;
+}
+
+.my-todo-list .form__btn {
+    background: #0be69d !important;
+    border: none !important;
+    cursor: pointer;
+    width: 100px;
+}
+
+.my-todo-list .todo-item {
+    display: flex;
+    padding: 10px;
+    background: #fff;
+    border-radius: 10px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.my-todo-list .todo-item--checked .todo-item__description {
+    text-decoration: line-through;
+}
+
+.my-todo-list .todo-item__description {
+    flex-grow: 1;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+.my-todo-list .todo-item__delete {
+    background: #0be69d !important;
+    border: none !important;
+    cursor: pointer;
+    width: 95px;
+    padding: 10px;
+}
+
+.my-todo-list input[type="text"] {
+    min-height: 25px !important;
+    padding: 10px !important;
+    border: 1px solid !important;
+    background: #fff !important;
+    color: #000 !important;
+}
+
+.my-todo-list input[type="checkbox"] {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+button {
+    background: #0be69d !important;
+    border: none !important;
+    cursor: pointer !important;
+    padding: 10px !important;
+    font-size: 18px !important;
+    color: #000 !important;
+}
+
+button:hover {
+    background: #09c97d !important;
+}
+
+#todoModal button {
+    background: #0be69d !important;
+    border: none !important;
+    color: #000 !important;
+}
+
+#todoModal .btn-secondary {
+    background: #0be69d !important;
+}
+
+#todoModal .btn-secondary:hover {
+    background: #09c97d !important;
+}
