@@ -1,5 +1,5 @@
 import React from 'react';
-import './app.css';
+import './App.css';
 
 class App extends React.Component {
     constructor(props) {
@@ -22,12 +22,6 @@ class App extends React.Component {
         }
     };
 
-    componentDidMount() {
-        const savedVotes = localStorage.getItem('votes');
-        if (savedVotes) {
-            this.setState({ votes: JSON.parse(savedVotes) });
-        }
-    }
 
     componentDidUpdate(prevProps, prevState) {
         if (prevState.votes !== this.state.votes) {
