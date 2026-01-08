@@ -1,5 +1,3 @@
-
-
 function Contacts({theme}) {
     return (
         <div className="contact-page">
