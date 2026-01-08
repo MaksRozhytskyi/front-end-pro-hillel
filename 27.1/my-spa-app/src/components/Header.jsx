@@ -1,11 +1,11 @@
 import {NavLink} from 'react-router-dom'
 import './Header.css'
-import untitled from './untitled.svg';
+import logo from './logo.svg';
 
 function Header({theme, toggleTheme}) {
     return (<header className="header">
             <div className="header-inner">
-                <img src={untitled} alt=""/>
+                <img src={logo} alt=""/>
                 <nav className="nav">
                     <NavLink to="/" className={({isActive}) => isActive ? 'nav-link active' : 'nav-link'}>
                         Main

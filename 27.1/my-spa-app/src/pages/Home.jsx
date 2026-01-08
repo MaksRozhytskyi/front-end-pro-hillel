@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-function Home() {
+function Home({theme}) {
     const [list, setList] = useState([]);
     const [input, setInput] = useState('');
 

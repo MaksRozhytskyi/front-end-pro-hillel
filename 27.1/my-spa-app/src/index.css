@@ -56,7 +56,7 @@ button:hover {
 
 
 .todo-block {
-    border: 1px solid black;
+    border: 1px solid #424242;
     max-width: 1280px;
     margin: 0 auto;
     padding: 20px;
@@ -64,6 +64,10 @@ button:hover {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+}
+
+.dark.app .todo-block {
+    border: 1px solid #fafafa;
 }
 
 .dark.app .todo-block {
