@@ -22,9 +22,14 @@ a:hover {
 
 body {
     margin: 0;
-    display: flex;
-    place-items: center;
+    padding: 0;
     min-width: 320px;
+    min-height: 100vh;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
 }
 
@@ -61,7 +66,7 @@ button:hover {
     align-items: center;
 }
 
-.dark.app .todo-block{
+.dark.app .todo-block {
     background-color: #424242;
 }
 
@@ -129,4 +134,29 @@ li {
 .app.dark .button-dark {
     background-color: #fafafa;
     color: #424242;
+}
+
+.contact-page {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #424242;
+}
+
+.contacts-content {
+    color: #424242;
+    justify-content: center;
+}
+
+.app.dark .contact-page {
+    background-color: #424242;
+    border: 1px solid #fafafa;
+}
+
+.app.dark .contacts-content {
+    color: #fafafa;
 }

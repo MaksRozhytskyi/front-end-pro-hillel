@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-function Todo() {
+function Home() {
     const [list, setList] = useState([]);
     const [input, setInput] = useState('');
 
@@ -46,4 +46,4 @@ function Todo() {
     );
 }
 
-export default Todo;
+export default Home;
