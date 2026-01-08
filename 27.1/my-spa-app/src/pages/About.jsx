@@ -1,4 +1,4 @@
-function About({theme}) {
+function About() {
     return (
         <div className="about-page">
             <div className="about-content">

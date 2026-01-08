@@ -1,4 +1,4 @@
-function Contacts({theme}) {
+function Contacts() {
     return (
         <div className="contact-page">
             <h1>Contacts</h1>
@@ -6,14 +6,14 @@ function Contacts({theme}) {
                 <h2>Email:</h2>
                 <p>maximrozhik@gmail.com</p>
 
-                <h2>Телефон:</h2>
+                <h2>Phone:</h2>
                 <p>+380 (97) 501-08-35</p>
 
-                <h2>Социальные сети:</h2>
-                <ul>
-                    <li><a href="https://github.com/MaksRozhytskyi">GitHub</a></li>
-                    <li><a href="https://www.linkedin.com/in/maksym-rozhytskyi-13906b1b7/">LinkedIn</a></li>
-                </ul>
+                <div className='social-info'>
+                    <h2>Social:</h2>
+                    <a href="https://github.com/MaksRozhytskyi">GitHub</a>
+                    <a href="https://www.linkedin.com/in/maksym-rozhytskyi-13906b1b7/">LinkedIn</a>
+                </div>
             </div>
         </div>
     )

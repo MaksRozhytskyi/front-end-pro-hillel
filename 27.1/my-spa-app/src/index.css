@@ -150,6 +150,13 @@ li {
 .contacts-content {
     color: #424242;
     justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+.social-info{
+    display: flex;
+    flex-direction: column;
 }
 
 .app.dark .contact-page {
