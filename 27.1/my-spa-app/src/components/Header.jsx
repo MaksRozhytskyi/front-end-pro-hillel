@@ -3,8 +3,7 @@ import './Header.css'
 import untitled from './untitled.svg';
 
 function Header({theme, toggleTheme}) {
-    return (
-        <header className="header">
+    return (<header className="header">
             <div className="header-inner">
                 <img src={untitled} alt=""/>
                 <nav className="nav">
@@ -25,8 +24,7 @@ function Header({theme, toggleTheme}) {
                     {theme === 'light' ? '🌙 Set Dark theme' : '☀️ Set Light theme'}
                 </button>
             </div>
-        </header>
-    )
+        </header>)
 }
 
 export default Header
