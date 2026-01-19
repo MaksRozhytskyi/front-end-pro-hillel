@@ -62,8 +62,9 @@ function* deleteTodoSaga(action) {
 function* clearCompletedSaga() {
     try {
         yield put(setLoading(true));
-        const remaining = yield call(todoApi.clearCompleted);
-        yield put(clearCompletedSuccess(remaining));
+        yield call(todoApi.clearCompleted);
+        yield put(setLoading(false));
+        yield put({type: FETCH_TODOS});
     } catch (error) {
         yield put(setError(error.message));
         yield put(setLoading(false));

@@ -112,6 +112,9 @@ function TodoApp() {
         <div className="stats">
             <span className="stat">Всего: {todos.length}</span>
         </div>
+        <button onClick={handleClearCompleted} disabled={loading} className="btn-clear">
+            Очистить завершенные
+        </button>
     </div>);
 }
 

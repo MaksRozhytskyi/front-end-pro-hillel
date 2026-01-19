@@ -36,10 +36,10 @@ export const todoApi = {
     },
 
     async clearCompleted() {
-        const todos = await this.fetchTodos();
+        const todos = await todoApi.fetchTodos();
         const completedTodos = todos.filter((todo) => todo.completed);
 
-        await Promise.all(completedTodos.map((todo) => this.deleteTodo(todo._id)));
-        return this.fetchTodos();
+        await Promise.all(completedTodos.map((todo) => todoApi.deleteTodo(todo._id)));
+        return todoApi.fetchTodos();
     },
 };
