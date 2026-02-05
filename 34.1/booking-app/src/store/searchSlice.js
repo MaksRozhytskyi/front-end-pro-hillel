@@ -1,18 +1,17 @@
+import {createSlice} from '@reduxjs/toolkit';
+
 const initialState = {
     destination: '', checkIn: '', checkOut: '', adults: '', children: '',
 };
 
-const SEARCH_SET_PARAMS = 'SEARCH_SET_PARAMS';
-
-export const setSearchParams = (params) => ({
-    type: SEARCH_SET_PARAMS, payload: params,
+const searchSlice = createSlice({
+    name: 'search', initialState, reducers: {
+        setSearchParams: (state, action) => {
+            return {...state, ...action.payload};
+        },
+    },
 });
 
-export const searchReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case SEARCH_SET_PARAMS:
-            return {...state, ...action.payload};
-        default:
-            return state;
-    }
-};
+export const {setSearchParams} = searchSlice.actions;
+
+export default searchSlice.reducer;

@@ -5,18 +5,10 @@ import {Box, Typography} from '@mui/material';
 function HotelsPage() {
     const {list: hotels = []} = useSelector((state) => state.hotels || {list: []});
     const {destination} = useSelector((state) => state.search || {});
+    const {list: destinations = []} = useSelector((state) => state.destination || {list: []});
 
-    const destinationMap = {
-        '70': 'Atlanta',
-        '149': 'Boston',
-        '5034': 'Boston',
-        '54': 'New York',
-        '10': 'Los Angeles',
-        '72': 'Miami',
-        '277': 'Washington',
-    };
-
-    const selectedCity = destinationMap[destination];
+    const selectedDestination = destinations.find(d => String(d.value) === String(destination));
+    const selectedCity = selectedDestination?.label;
 
     const filteredHotels = selectedCity ? hotels.filter(hotel => hotel.city === selectedCity) : hotels;
 

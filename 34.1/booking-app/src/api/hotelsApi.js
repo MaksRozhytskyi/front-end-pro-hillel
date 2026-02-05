@@ -1,7 +1,3 @@
-import axios from 'axios';
+import axiosInstance from './axiosInstance';
 
-const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL,
-});
-
-export const fetchHotelsApi = () => api.get('/hotels');
+export const fetchHotelsApi = () => axiosInstance.get('/hotels');

@@ -1,7 +1,7 @@
 import {call, put, takeLatest} from 'redux-saga/effects';
 import {fetchDestinationsApi} from '../api/destinationApi';
 import {
-    fetchDestinationsSuccess, fetchDestinationsFailure, DESTINATIONS_TYPES,
+    fetchDestinationsRequest, fetchDestinationsSuccess, fetchDestinationsFailure,
 } from './destinationSlice';
 
 function* fetchDestinationsWorker() {
@@ -15,5 +15,5 @@ function* fetchDestinationsWorker() {
 }
 
 export function* watchDestinations() {
-    yield takeLatest(DESTINATIONS_TYPES.DESTINATIONS_FETCH_REQUEST, fetchDestinationsWorker);
+    yield takeLatest(fetchDestinationsRequest.type, fetchDestinationsWorker);
 }

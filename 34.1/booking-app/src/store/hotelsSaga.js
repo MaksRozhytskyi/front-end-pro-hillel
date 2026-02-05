@@ -1,7 +1,7 @@
 import {call, put, takeLatest} from 'redux-saga/effects';
 import {fetchHotelsApi} from '../api/hotelsApi';
 import {
-    fetchHotelsSuccess, fetchHotelsFailure, HOTELS_TYPES,
+    fetchHotelsRequest, fetchHotelsSuccess, fetchHotelsFailure,
 } from './hotelsSlice';
 import {setSearchParams} from './searchSlice';
 import {push} from 'redux-first-history';
@@ -19,5 +19,5 @@ function* fetchHotelsWorker(action) {
 }
 
 export function* watchHotels() {
-    yield takeLatest(HOTELS_TYPES.HOTELS_FETCH_REQUEST, fetchHotelsWorker);
+    yield takeLatest(fetchHotelsRequest.type, fetchHotelsWorker);
 }
