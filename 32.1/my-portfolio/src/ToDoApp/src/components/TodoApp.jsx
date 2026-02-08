@@ -34,7 +34,7 @@ function TodoApp() {
     };
 
     const handleEditTodo = (todo) => {
-        const newTitle = prompt('Редактировать задачу:', todo.title);
+        const newTitle = prompt('Edit task:', todo.title);
         if (newTitle === null || newTitle.trim() === '') {
             return;
         }
@@ -67,17 +67,17 @@ function TodoApp() {
                 type="text"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                placeholder="Добавить новую задачу..."
+                placeholder="Add a new task"
                 disabled={loading}
                 className="todo-input"
             />
             <button type="submit" disabled={loading} className="btn-add">
-                {loading ? 'Загрузка...' : 'Добавить'}
+                {loading ? 'Loading...' : 'Add a task'}
             </button>
         </form>
 
         {todos.length === 0 ? (<div className="empty-state">
-            <p>Нет задач. Добавьте новую задачу!</p>
+            <p>No tasks. Add a new task!</p>
         </div>) : (<ul className="todo-list">
             {todos.map((todo) => (<li
                 key={todo._id}
@@ -96,24 +96,24 @@ function TodoApp() {
                         className="btn-edit"
                         disabled={loading}
                     >
-                        Редактировать
+                        Edit
                     </button>
                     <button
                         onClick={() => handleDeleteTodo(todo._id)}
                         className="btn-delete"
                         disabled={loading}
                     >
-                        Удалить
+                        Delete
                     </button>
                 </div>
 
             </li>))}
         </ul>)}
         <div className="stats">
-            <span className="stat">Всего: {todos.length}</span>
+            <span className="stat">Total: {todos.length}</span>
         </div>
         <button onClick={handleClearCompleted} disabled={loading} className="btn-clear">
-            Очистить завершенные
+            Clear completed
         </button>
     </div>);
 }
