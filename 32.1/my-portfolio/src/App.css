@@ -1,10 +1,6 @@
-#root {
+html body #root {
   min-height: 100vh;
-}
-
-body.page-resume #root,
-body.page-todo #root,
-body.page-swapi #root {
+  width: 100%;
   max-width: none;
   margin: 0;
   padding: 0;
@@ -18,24 +14,20 @@ body.page-swapi #root {
   flex-direction: column;
 }
 
-body.page-todo .page {
-  background: #66ffff;
-}
-
-body.page-swapi .page {
-  background: #f1f3f5;
-}
-
-body.page-swapi {
-  overflow-x: hidden;
-}
-
 .toolbar {
+  display: flex;
+  width: 100%;
+  margin: 0;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+.toolbar-inner {
   display: flex;
   gap: 24px;
   justify-content: space-between;
-  max-width: 1400px;
   width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -86,7 +78,7 @@ body.page-swapi {
   text-align: center;
 }
 
-body.page-todo .btn-clear {
+.todo-shell .btn-clear {
   background: #d1d5db;
   color: #111827;
 }
@@ -94,6 +86,12 @@ body.page-todo .btn-clear {
 .footer {
   background: #eaeaea;
   padding: 24px 0;
+}
+
+.footer-inner {
+  padding: 0 24px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 @media (max-width: 900px) {
