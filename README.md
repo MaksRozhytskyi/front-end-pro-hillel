@@ -5,13 +5,13 @@ This repository contains homework assignments for the "Front-end Pro" advanced c
 
 ## Repository Structure
 - `3.1/`, `3.2/`, `3.3/`, etc. — Directories with homework tasks for each module and lesson.
-- Each folder contains code, solutions, and explanations.
-- All assignments were completed as part of the 2025 course curriculum.
+- Each folder contains code and solutions
+- All assignments were completed as part of the 2025-2026 course curriculum.
 
 ## Course Information
 - **Course:** Front-end Pro ([ithillel.ua/courses/front-end-pro](https://ithillel.ua/courses/front-end-pro))
 - **School:** IT Hillel
-- **Year:** 2025
+- **Year:** 2025-2026
 
 ## Author
 Prepared by Maksym Rozhytskyi
